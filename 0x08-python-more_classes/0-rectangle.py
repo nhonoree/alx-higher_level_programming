@@ -1,6 +1,3 @@
-
-
-
 #!/usr/bin/python3
 """
 0-rectangle: class
@@ -8,5 +5,5 @@
 
 
 class Rectangle:
-    """ Empty class """
+    """Empty class"""
     pass
