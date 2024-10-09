@@ -1,0 +1,29 @@
+# Tests for add_integer function
+
+# Test 1: Adding two integers
+>>> add_integer(1, 2)
+3
+
+# Test 2: Adding a large positive integer and a negative integer
+>>> add_integer(100, -2)
+98
+
+# Test 3: Adding an integer and using default for second value
+>>> add_integer(2)
+100  # 2 + 98 = 100
+
+# Test 4: Adding a float and an integer
+>>> add_integer(100.3, -2)
+98  # 100.3 is cast to 100, so 100 + (-2) = 98
+
+# Test 5: Passing a string instead of a number
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+# Test 6: Passing None instead of a number
+>>> add_integer(None)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
