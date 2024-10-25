@@ -1,21 +1,42 @@
+#!/usr/bin/python3
 import unittest
 from models.square import Square
 
+
 class TestSquare(unittest.TestCase):
+    """ Test the Square class """
+
     def test_initialization(self):
-        s = Square(4, 2, 3, 1)
-        self.assertEqual(s.size, 4)
-        self.assertEqual(s.width, 4)
-        self.assertEqual(s.height, 4)
-        self.assertEqual(s.x, 2)
-        self.assertEqual(s.y, 3)
-        self.assertEqual(s.id, 1)
+        s = Square(5)
+        self.assertEqual(s.size, 5)
+        self.assertEqual(s.x, 0)
+        self.assertEqual(s.y, 0)
+        self.assertIsNotNone(s.id)
 
-    def test_str_method(self):
-        s = Square(4, 4, 4, 10)
-        self.assertEqual(str(s), "[Square] (10) 4/4 - 4")
+    def test_area(self):
+        s = Square(4)
+        self.assertEqual(s.area(), 16)
 
-    def test_to_dictionary(self):
-        s = Square(5, 2, 3, 1)
-        expected_dict = {'id': 1, 'size': 5, 'x': 2, 'y': 3}
-        self.assertEqual(s.to_dictionary(), expected_dict)
+    def test_str(self):
+        s = Square(5, 1, 2, 3)
+        self.assertEqual(str(s), "[Square] (3) 1/2 - 5")
+
+    def test_update_args(self):
+        s = Square(5)
+        s.update(10, 20, 30, 40)
+        self.assertEqual(s.id, 10)
+        self.assertEqual(s.size, 20)
+        self.assertEqual(s.x, 30)
+        self.assertEqual(s.y, 40)
+
+    def test_update_kwargs(self):
+        s = Square(5)
+        s.update(id=10, size=20, x=30, y=40)
+        self.assertEqual(s.id, 10)
+        self.assertEqual(s.size, 20)
+        self.assertEqual(s.x, 30)
+        self.assertEqual(s.y, 40)
+
+
+if __name__ == '__main__':
+    unittest.main()
