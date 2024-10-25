@@ -1,48 +1,18 @@
-class Rectangle:
-    _id_counter = 1  # Class variable to keep track of IDs
+"""Rectangle class that inherits from Base."""
 
-    def __init__(self, width, height, id=None):
-        if id is None:
-            self.id = Rectangle._id_counter
-            Rectangle._id_counter += 1
-        else:
-            self.id = id
+from models.base import Base
+
+class Rectangle(Base):
+    """Rectangle class."""
+
+    def __init__(self, width, height, x=0, y=0, id=None):
+        super().__init__(id)
         self.width = width
         self.height = height
-
-    @property
-    def width(self):
-        return self._width
-
-    @width.setter
-    def width(self, value):
-        if not isinstance(value, int):
-            raise TypeError("width must be an integer")
-        if value <= 0:
-            raise ValueError("width must be > 0")
-        self._width = value
-
-    @property
-    def height(self):
-        return self._height
-
-    @height.setter
-    def height(self, value):
-        if not isinstance(value, int):
-            raise TypeError("height must be an integer")
-        if value <= 0:
-            raise ValueError("height must be > 0")
-        self._height = value
-
-    def area(self):
-        return self.width * self.height
-
-    def display(self):
-        for _ in range(self.height):
-            print('#' * self.width)
+        self.x = x
+        self.y = y
 
     def __str__(self):
-        return f"[Rectangle] ({self.id}) {self.width}/{self.height}"  # Fixed f-string
+        return f"[Rectangle] ({self.id}) {self.width}/{self.height}"
 
-    def to_dictionary(self):
-        return {'id': self.id, 'width': self.width, 'height': self.height}
+    # Additional methods...
