@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import json
+=======
+"""Base class for all geometric shapes."""
+>>>>>>> d0c69920a5afaafdc65beee62b8aef2ff22b8d19
 
 class Base:
+    """Base class with id management for shapes."""
+    
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -9,6 +15,7 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+<<<<<<< HEAD
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -39,3 +46,5 @@ class Base:
                 return cls.from_json_string(file.read())
         except FileNotFoundError:
             return []
+=======
+>>>>>>> d0c69920a5afaafdc65beee62b8aef2ff22b8d19

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# base.py
+>>>>>>> d0c69920a5afaafdc65beee62b8aef2ff22b8d19
 class Base:
     """A simple base class for future shapes"""
     __nb_objects = 0

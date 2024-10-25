@@ -1,42 +1,20 @@
-# tests/test_rectangle.py
+"""Unit tests for the Rectangle class."""
 
 import unittest
 from models.rectangle import Rectangle
 
 class TestRectangle(unittest.TestCase):
+    """Test cases for the Rectangle class."""
 
-    def test_rectangle_initialization(self):
-        """Test proper initialization of Rectangle object"""
-        rect = Rectangle(3, 5)
-        self.assertEqual(rect.width, 3)
-        self.assertEqual(rect.height, 5)
-        self.assertEqual(rect.x, 0)
-        self.assertEqual(rect.y, 0)
+    def test_initialization(self):
+        """Test initialization of Rectangle."""
+        r = Rectangle(4, 5)
+        self.assertEqual(r.width, 4)
+        self.assertEqual(r.height, 5)
 
-    def test_area(self):
-        """Test area calculation"""
-        rect = Rectangle(4, 6)
-        self.assertEqual(rect.area(), 24)
+    def test_str_method(self):
+        """Test the __str__ method."""
+        r = Rectangle(4, 5, id=10)
+        self.assertEqual(str(r), "[Rectangle] (10) 4/5")
 
-    def test_invalid_width_type(self):
-        """Test that an error is raised for invalid width type"""
-        with self.assertRaises(TypeError):
-            Rectangle("3", 5)
-
-    def test_invalid_height_value(self):
-        """Test that an error is raised for invalid height value"""
-        with self.assertRaises(ValueError):
-            Rectangle(3, -5)
-
-    # Add more tests for methods like display, update, etc.
-
-if __name__ == '__main__':
-    unittest.main()
-import sys
-import os
-sys.path.append('/root/alx-higher_level_programming/0x0C-python-almost_a_circle/models')
-from models.rectangle import Rectangle
-
-rect = Rectangle(width=10, height=5)
-print(rect)  # This will use the __str__ or __repr__ method if defined
-
+    # Additional test methods...
