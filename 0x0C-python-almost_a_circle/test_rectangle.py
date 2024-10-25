@@ -32,3 +32,11 @@ class TestRectangle(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+import sys
+import os
+sys.path.append('/root/alx-higher_level_programming/0x0C-python-almost_a_circle/models')
+from models.rectangle import Rectangle
+
+rect = Rectangle(width=10, height=5)
+print(rect)  # This will use the __str__ or __repr__ method if defined
+
