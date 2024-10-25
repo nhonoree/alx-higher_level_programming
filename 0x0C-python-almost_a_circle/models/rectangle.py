@@ -15,7 +15,7 @@ class Rectangle(Base):
             y (int): The y position of the rectangle (default is 0).
             id (int): The id of the rectangle (default is None).
         """
-        super().__init__(id)  # Call to the superclass constructor
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
@@ -76,3 +76,39 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """Return the area of the rectangle."""
+        return self.width * self.height
+
+    def display(self):
+        """Print the rectangle using '#' character."""
+        print("\n" * self.y, end="")  # Create y-offset
+        for _ in range(self.height):
+            print(" " * self.x + "#" * self.width)  # Create x-offset and print
+
+    def __str__(self):
+        """Return a string representation of the rectangle."""
+        return (f"[Rectangle] ({self.id}) {self.x}/{self.y} - "
+                f"{self.width}/{self.height}")
+
+    def update(self, *args, **kwargs):
+        """Update rectangle attributes."""
+        if args:
+            attributes = ['id', 'width', 'height', 'x', 'y']
+            for i, arg in enumerate(args):
+                setattr(self, attributes[i], arg)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Return the dictionary representation of a Rectangle."""
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+        }
+
