@@ -1,9 +1,10 @@
-<<<<<<< HEAD
-=======
-# base.py
->>>>>>> d0c69920a5afaafdc65beee62b8aef2ff22b8d19
+#!/usr/bin/python3
+"""Base class for all other classes in the project."""
+
+
 class Base:
-    """A simple base class for future shapes"""
+    """Base class for all geometrical shapes."""
+
     __nb_objects = 0
 
     def __init__(self, id=None):
