@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-""" rectangle.py """
+""" Rectangle class that inherits from Base """
 
 from models.base import Base
 
 class Rectangle(Base):
+    """ Rectangle class """
+
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
         self.width = width
@@ -60,5 +62,5 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """ Returns the area of the rectangle """
+        """ Calculate the area of the rectangle """
         return self.width * self.height
