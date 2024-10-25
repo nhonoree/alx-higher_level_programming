@@ -1,9 +1,15 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
+=======
+""" Test Rectangle class """
+
+>>>>>>> 87f4279dcf8894611017af22dcf0cf8c02b31f40
 import unittest
 from models.rectangle import Rectangle
 
 
 class TestRectangle(unittest.TestCase):
+<<<<<<< HEAD
     """ Test the Rectangle class """
 
     def test_initialization(self):
@@ -47,6 +53,45 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 40)
         self.assertEqual(r.y, 50)
 
+=======
+    """ Tests for the Rectangle class """
+
+    def test_area(self):
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+        r2 = Rectangle(2, 10)
+        self.assertEqual(r2.area(), 20)
+        r3 = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(r3.area(), 56)
+
+    def test_invalid_width(self):
+        with self.assertRaises(TypeError):
+            Rectangle("1", 2)
+        with self.assertRaises(ValueError):
+            Rectangle(0, 2)
+        with self.assertRaises(ValueError):
+            Rectangle(-1, 2)
+
+    def test_invalid_height(self):
+        with self.assertRaises(TypeError):
+            Rectangle(2, "1")
+        with self.assertRaises(ValueError):
+            Rectangle(2, 0)
+        with self.assertRaises(ValueError):
+            Rectangle(2, -1)
+
+    def test_invalid_x(self):
+        with self.assertRaises(TypeError):
+            Rectangle(2, 2, "1")
+        with self.assertRaises(ValueError):
+            Rectangle(2, 2, -1)
+
+    def test_invalid_y(self):
+        with self.assertRaises(TypeError):
+            Rectangle(2, 2, 0, "1")
+        with self.assertRaises(ValueError):
+            Rectangle(2, 2, 0, -1)
+>>>>>>> 87f4279dcf8894611017af22dcf0cf8c02b31f40
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,9 +1,15 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
+=======
+""" Test Square class """
+
+>>>>>>> 87f4279dcf8894611017af22dcf0cf8c02b31f40
 import unittest
 from models.square import Square
 
 
 class TestSquare(unittest.TestCase):
+<<<<<<< HEAD
     """ Test the Square class """
 
     def test_initialization(self):
@@ -36,6 +42,35 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.size, 20)
         self.assertEqual(s.x, 30)
         self.assertEqual(s.y, 40)
+=======
+    """ Tests for the Square class """
+
+    def test_area(self):
+        s1 = Square(5)
+        self.assertEqual(s1.area(), 25)
+
+    def test_update_args(self):
+        s = Square(5)
+        s.update(89)
+        self.assertEqual(s.id, 89)
+        s.update(89, 10)
+        self.assertEqual(s.size, 10)
+        s.update(89, 10, 1)
+        self.assertEqual(s.x, 1)
+        s.update(89, 10, 1, 2)
+        self.assertEqual(s.y, 2)
+
+    def test_update_kwargs(self):
+        s = Square(5)
+        s.update(id=89)
+        self.assertEqual(s.id, 89)
+        s.update(size=10)
+        self.assertEqual(s.size, 10)
+        s.update(x=3)
+        self.assertEqual(s.x, 3)
+        s.update(y=4)
+        self.assertEqual(s.y, 4)
+>>>>>>> 87f4279dcf8894611017af22dcf0cf8c02b31f40
 
 
 if __name__ == '__main__':

@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 import json
+=======
+#!/usr/bin/python3
+
+
+""" Base class for all models """
+
+>>>>>>> 87f4279dcf8894611017af22dcf0cf8c02b31f40
 
 class Base:
+    """ A base class for all other classes """
+
     __nb_objects = 0
 
     def __init__(self, id=None):
