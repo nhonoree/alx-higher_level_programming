@@ -1,42 +1,40 @@
+#!/usr/bin/python3
+""" Square class that inherits from Rectangle """
+
 from models.rectangle import Rectangle
 
 class Square(Rectangle):
-<<<<<<< HEAD
-    def __init__(self, size, id=None):
-        super().__init__(size, size, id)
-        self.size = size
-=======
+    """ Square class """
+
     def __init__(self, size, x=0, y=0, id=None):
         super().__init__(size, size, x, y, id)
->>>>>>> d0c69920a5afaafdc65beee62b8aef2ff22b8d19
 
     @property
     def size(self):
+        """ Get the size of the square """
         return self.width
 
     @size.setter
     def size(self, value):
+        """ Set the size of the square """
         self.width = value
         self.height = value
 
-<<<<<<< HEAD
-    def area(self):
-        return self.size * self.size
+    def update(self, *args, **kwargs):
+        """ Update the Square instance with *args or **kwargs """
+        if args:
+            if len(args) > 0:
+                self.id = args[0]
+            if len(args) > 1:
+                self.size = args[1]
+            if len(args) > 2:
+                self.x = args[2]
+            if len(args) > 3:
+                self.y = args[3]
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     def __str__(self):
-        return f"[Square] ({self.id}) {self.size}/{self.size}"
-
-    def to_dictionary(self):
-        return {'id': self.id, 'size': self.size}
-=======
-    def __str__(self):
+        """ Return a string representation of the Square instance """
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
-
-    def to_dictionary(self):
-        return {
-            'id': self.id,
-            'size': self.size,
-            'x': self.x,
-            'y': self.y
-        }
->>>>>>> d0c69920a5afaafdc65beee62b8aef2ff22b8d19

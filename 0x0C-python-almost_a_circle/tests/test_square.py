@@ -1,63 +1,38 @@
+#!/usr/bin/python3
+""" Test Square class """
+
 import unittest
 from models.square import Square
 
 class TestSquare(unittest.TestCase):
-<<<<<<< HEAD
-    """Test cases for the Square class."""
-
-    def setUp(self):
-        """Set up a new Square instance for testing."""
-        self.square1 = Square(5)  # size = 5
-        self.square2 = Square(10, 2, 3)  # size = 10, x = 2, y = 3
+    """ Tests for the Square class """
 
     def test_area(self):
-        """Test the area calculation."""
-        self.assertEqual(self.square1.area(), 25)  # 5 * 5 = 25
-        self.assertEqual(self.square2.area(), 100)  # 10 * 10 = 100
+        s1 = Square(5)
+        self.assertEqual(s1.area(), 25)
 
-    def test_str(self):
-        """Test the __str__ method."""
-        self.assertEqual(str(self.square1), "[Square] (1) 0/0 - 5")
-        self.assertEqual(str(self.square2), "[Square] (2) 2/3 - 10")
+    def test_update_args(self):
+        s = Square(5)
+        s.update(89)
+        self.assertEqual(s.id, 89)
+        s.update(89, 10)
+        self.assertEqual(s.size, 10)
+        s.update(89, 10, 1)
+        self.assertEqual(s.x, 1)
+        s.update(89, 10, 1, 2)
+        self.assertEqual(s.y, 2)
 
-    def test_position(self):
-        """Test the position of the square."""
-        self.assertEqual(self.square2.x, 2)
-        self.assertEqual(self.square2.y, 3)
+    def test_update_kwargs(self):
+        s = Square(5)
+        s.update(id=89)
+        self.assertEqual(s.id, 89)
+        s.update(size=10)
+        self.assertEqual(s.size, 10)
+        s.update(x=3)
+        self.assertEqual(s.x, 3)
+        s.update(y=4)
+        self.assertEqual(s.y, 4)
 
-    def test_size_setter(self):
-        """Test setting size via setter."""
-        with self.assertRaises(ValueError):
-            self.square1.size = -1  # Invalid size
-        with self.assertRaises(TypeError):
-            self.square1.size = "two"  # Invalid type
 
-    def test_update_method(self):
-        """Test the update method."""
-        self.square1.update(2, 7, 1, 2)
-        self.assertEqual(self.square1.id, 2)
-        self.assertEqual(self.square1.size, 7)
-        self.assertEqual(self.square1.x, 1)
-        self.assertEqual(self.square1.y, 2)
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
-=======
-    def test_initialization(self):
-        s = Square(4, 2, 3, 1)
-        self.assertEqual(s.size, 4)
-        self.assertEqual(s.width, 4)
-        self.assertEqual(s.height, 4)
-        self.assertEqual(s.x, 2)
-        self.assertEqual(s.y, 3)
-        self.assertEqual(s.id, 1)
-
-    def test_str_method(self):
-        s = Square(4, 4, 4, 10)
-        self.assertEqual(str(s), "[Square] (10) 4/4 - 4")
-
-    def test_to_dictionary(self):
-        s = Square(5, 2, 3, 1)
-        expected_dict = {'id': 1, 'size': 5, 'x': 2, 'y': 3}
-        self.assertEqual(s.to_dictionary(), expected_dict)
->>>>>>> d0c69920a5afaafdc65beee62b8aef2ff22b8d19

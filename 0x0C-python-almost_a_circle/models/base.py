@@ -1,8 +1,12 @@
 #!/usr/bin/python3
-""" Base class """
+
+
+""" Base class for all models """
+
 
 class Base:
-    """ Base class for all other classes """
+    """ A base class for all other classes """
+
     __nb_objects = 0
 
     def __init__(self, id=None):
