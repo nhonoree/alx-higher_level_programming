@@ -1,0 +1,10 @@
+-- Find the TV show with the longest title
+-- Use LENGTH() to calculate the length of each title
+
+SELECT 
+    title                -- Title of the TV show
+FROM 
+    tv_shows
+ORDER BY 
+    LENGTH(title) DESC   -- Sort by title length in descending order
+LIMIT 1;                 -- Select the longest title
