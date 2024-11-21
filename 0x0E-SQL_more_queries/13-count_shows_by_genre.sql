@@ -1,10 +1,17 @@
--- Title: Number of Shows by Genre
--- Script to list each genre and the number of shows linked to it from `hbtn_0d_tvshows`
--- Each record displays: genres.name - number_of_shows
--- Results are sorted in descending order by the number of shows and then ascending by genres.name
+-- Script to list all genres and the number of shows linked to each.
+-- Genres without any shows linked are excluded.
+-- Results are sorted in descending order by the number of shows.
 
-SELECT genres.name, COUNT(tv_show_genres.tv_show_id) AS number_of_shows
-FROM genres
-LEFT JOIN tv_show_genres ON genres.id = tv_show_genres.genre_id
-GROUP BY genres.name
-ORDER BY number_of_shows DESC, genres.name;
+SELECT 
+    tv_genres.name AS genre, 
+    COUNT(tv_show_genres.show_id) AS number_of_shows
+FROM 
+    tv_genres
+LEFT JOIN 
+    tv_show_genres ON tv_genres.id = tv_show_genres.genre_id
+GROUP BY 
+    tv_genres.id
+HAVING 
+    number_of_shows > 0
+ORDER BY 
+    number_of_shows DESC;
