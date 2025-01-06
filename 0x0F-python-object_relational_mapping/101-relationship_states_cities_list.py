@@ -10,7 +10,9 @@ from relationship_city import City
 
 if __name__ == "__main__":
     # Create engine and bind to the database
-    engine = create_engine(f"mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@localhost/{sys.argv[3]}")
+    engine = create_engine(
+        f"mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@localhost/{sys.argv[3]}"
+    )
     Base.metadata.create_all(engine)
 
     # Create a new session
