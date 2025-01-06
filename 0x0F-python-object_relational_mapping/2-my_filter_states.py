@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Script that filters states by user input from the database hbtn_0e_0_usa.
+Script that filters states by user input
 """
-import MySQLdb
 import sys
+import MySQLdb
 
 if __name__ == "__main__":
-    # Connect to MySQL database
+    # Connect to the database
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -14,20 +14,24 @@ if __name__ == "__main__":
         passwd=sys.argv[2],
         db=sys.argv[3]
     )
-
-    # Create a cursor to execute queries
     cursor = db.cursor()
 
-    # Construct query with user input
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(sys.argv[4])
+    # Format the query to include the user input
+    query = (
+        "SELECT * FROM states WHERE BINARY name = '{}' "
+        "ORDER BY id ASC".format(sys.argv[4])
+    )
 
-    # Execute the query
-    cursor.execute(query)
+    try:
+        cursor.execute(query)
+        results = cursor.fetchall()
 
-    # Fetch and display the results
-    results = cursor.fetchall()
-    for row in results:
-        print(row)
+        # Print results in the specified format
+        for row in results:
+            print(row)
+
+    except Exception as e:
+        print(f"Error: {e}")
 
     # Clean up
     cursor.close()
