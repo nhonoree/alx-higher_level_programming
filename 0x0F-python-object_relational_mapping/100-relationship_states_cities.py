@@ -1,47 +1,29 @@
 #!/usr/bin/python3
+"""
+Creates the State "California" with the City "San Francisco" in the database.
+"""
+import sys
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship, sessionmaker
+from sqlalchemy.orm import sessionmaker
+from relationship_state import Base, State
+from relationship_city import City
 
-Base = declarative_base()
-
-class State(Base):
-    __tablename__ = 'states'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(128), nullable=False)
-    cities = relationship('City', backref='state', cascade="all, delete")
-
-class City(Base):
-    __tablename__ = 'cities'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
-
-def main():
-    import sys
-    if len(sys.argv) != 4:
-        print("Usage: ./100-relationship_states_cities.py mysql_username mysql_password db_name")
-        return
-
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-
-    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost/{db_name}')
+if __name__ == "__main__":
+    # Create engine and bind to the database
+    engine = create_engine(f"mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@localhost/{sys.argv[3]}")
     Base.metadata.create_all(engine)
 
+    # Create a new session
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    california = State(name="California")
-    san_francisco = City(name="San Francisco", state=california)
+    # Create State and City objects
+    new_state = State(name="California")
+    new_city = City(name="San Francisco", state=new_state)
 
-    session.add(california)
-    session.add(san_francisco)
+    # Add and commit to the database
+    session.add(new_state)
     session.commit()
 
+    # Close the session
     session.close()
-
-if __name__ == "__main__":
-    main()

@@ -1,20 +1,22 @@
 #!/usr/bin/python3
-from sqlalchemy import Column, Integer, String, ForeignKey
+"""
+Defines the State class with a relationship to the City class.
+"""
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+
 class State(Base):
+    """
+    Represents a state for a MySQL database.
+    """
     __tablename__ = 'states'
-    
-    id = Column(Integer, primary_key=True)
-    name = Column(String(128), nullable=False)
-    cities = relationship("City", backref="state", cascade="all, delete-orphan")
 
-class City(Base):
-    __tablename__ = 'cities'
-
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
+
+    # Relationship with the City class
+    cities = relationship('City', backref='state', cascade='all, delete')
